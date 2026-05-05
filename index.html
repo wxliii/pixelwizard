@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="PixelWizard: Towards Efficient High-Fidelity Video Generation at Ultra-Large Spatial Resolution."
+    />
+    <title>PixelWizard | Ultra-Large Resolution Video Generation</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="PixelWizard home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>PixelWizard</span>
+        </a>
+        <div class="nav-links">
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#media">Media</a>
+          <a href="#citation">BibTeX</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">ICML 2026</p>
+          <h1 id="hero-title">
+            PixelWizard: Towards Efficient High-Fidelity Video Generation at
+            Ultra-Large Spatial Resolution
+          </h1>
+          <p class="authors">
+            Wenxue Li, Jingjing Ren, Peng Zhang, Tian Ye, Daiguo Zhou,
+            Jian Luan, Lei Zhu
+          </p>
+          <p class="hero-subtitle">
+            A hierarchical framework for native 2K/4K video generation that
+            separates global structure modeling from fine-grained detail
+            synthesis and enables fast few-step inference.
+          </p>
+          <div class="hero-actions" aria-label="Quick links">
+            <a class="button primary" href="#abstract">Read abstract</a>
+            <a class="button" href="#media">View media</a>
+            <a class="button" href="https://github.com/wxliii/pixelwizard">Code</a>
+            <button class="button ghost" type="button" data-copy="pixelwizard">
+              Copy BibTeX
+            </button>
+          </div>
+        </div>
+
+        <figure class="hero-visual">
+          <img
+            src="assets/hero-teaser.svg"
+            alt="PixelWizard teaser placeholder for ultra-large resolution video generation."
+          />
+          <figcaption>
+            High-resolution video synthesis with coherent global structure and
+            fine-grained local detail.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section summary-strip" aria-label="Paper highlights">
+        <article>
+          <span>Task</span>
+          <strong>Native 2K/4K video generation</strong>
+        </article>
+        <article>
+          <span>Core idea</span>
+          <strong>Structure-detail decoupling</strong>
+        </article>
+        <article>
+          <span>Speed</span>
+          <strong>Over 10x sampling acceleration</strong>
+        </article>
+        <article>
+          <span>Training</span>
+          <strong>Distillation-free few-step inference</strong>
+        </article>
+      </section>
+
+      <section class="section abstract" id="abstract" aria-labelledby="abstract-title">
+        <div class="section-heading">
+          <p class="eyebrow">Abstract</p>
+          <h2 id="abstract-title">Efficient high-fidelity video at ultra-large resolution</h2>
+        </div>
+        <div class="abstract-body">
+          <p>
+            High-resolution video generation is limited by two coupled
+            bottlenecks: unstable optimization and prohibitive computational
+            cost. As the token sequence expands, optimization becomes biased
+            toward local textures, weakening global coherence and increasing
+            both training and inference cost.
+          </p>
+          <p>
+            PixelWizard addresses this by hierarchically decoupling global
+            structure modeling from high-resolution detail synthesis. It first
+            establishes a compact spatiotemporal anchor that concentrates dense
+            structural priors, then uses this anchor to guide fine-grained
+            synthesis at native high resolution.
+          </p>
+          <p>
+            To break the inference bottleneck, PixelWizard introduces
+            Noise-Span Aligned Shortcut Training, together with Exponential
+            Index-Biased Sampling and Adaptive Noise-Span Calibration. This
+            enables robust few-step generation without memory-heavy
+            teacher-student distillation.
+          </p>
+        </div>
+      </section>
+
+      <section class="section method" id="method" aria-labelledby="method-title">
+        <div class="section-heading">
+          <p class="eyebrow">Method</p>
+          <h2 id="method-title">From compact anchors to high-resolution detail</h2>
+        </div>
+
+        <div class="method-flow" aria-label="PixelWizard method flow">
+          <article class="method-step">
+            <span class="step-index">01</span>
+            <h3>Spatial-Temporal Anchor Modeling</h3>
+            <p>
+              PixelWizard models global motion and layout in a compact
+              high-density latent space, where long-range spatiotemporal
+              structure is easier to optimize.
+            </p>
+          </article>
+
+          <article class="method-step">
+            <span class="step-index">02</span>
+            <h3>Anchor-Guided High-Resolution Synthesis</h3>
+            <p>
+              The generated anchor is injected into the DiT backbone as a
+              structural prior, allowing high-resolution synthesis to focus on
+              local textures and fine details.
+            </p>
+          </article>
+
+          <article class="method-step">
+            <span class="step-index">03</span>
+            <h3>Noise-Span Aligned Shortcut Training</h3>
+            <p>
+              A step-size-aware shortcut objective lets the model traverse the
+              generation trajectory with large denoising steps while remaining
+              stable on high-resolution grids.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section results" id="results" aria-labelledby="results-title">
+        <div class="section-heading">
+          <p class="eyebrow">Results</p>
+          <h2 id="results-title">High visual quality with practical inference speed</h2>
+        </div>
+        <div class="result-grid">
+          <article class="result-card">
+            <span>2K</span>
+            <strong>2560 x 1440</strong>
+            <p>
+              PixelWizard-2K generates 121-frame videos with strong subject
+              consistency, imaging quality, and substantially lower latency than
+              direct high-resolution extrapolation.
+            </p>
+          </article>
+          <article class="result-card">
+            <span>4K</span>
+            <strong>3840 x 2144</strong>
+            <p>
+              PixelWizard-4K scales to ultra-large spatial resolution while
+              preserving coherent structures and fine local details.
+            </p>
+          </article>
+          <article class="result-card">
+            <span>Efficiency</span>
+            <strong>Over 10x faster</strong>
+            <p>
+              The method accelerates native 2K/4K generative sampling through
+              few-step inference without relying on memory-intensive
+              distillation pipelines.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section media" id="media" aria-labelledby="media-title">
+        <div class="section-heading">
+          <p class="eyebrow">Media</p>
+          <h2 id="media-title">Figures and videos</h2>
+        </div>
+        <div class="media-grid">
+          <article class="media-placeholder wide">
+            <span>Teaser Figure</span>
+            <p>Main qualitative result or paper Figure 1.</p>
+          </article>
+          <article class="media-placeholder">
+            <span>Video Gallery</span>
+            <p>2K/4K generated videos.</p>
+          </article>
+          <article class="media-placeholder">
+            <span>Comparison</span>
+            <p>Baseline and ablation visualizations.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section citation" id="citation" aria-labelledby="citation-title">
+        <div class="section-heading">
+          <p class="eyebrow">Citation</p>
+          <h2 id="citation-title">BibTeX</h2>
+        </div>
+        <div class="citation-box">
+          <pre><code id="bibtex">@inproceedings{li2026pixelwizard,
+  title={PixelWizard: Towards Efficient High-Fidelity Video Generation at Ultra-Large Spatial Resolution},
+  author={Li, Wenxue and Ren, Jingjing and Zhang, Peng and Ye, Tian and Zhou, Daiguo and Luan, Jian and Zhu, Lei},
+  booktitle={International Conference on Machine Learning},
+  year={2026}
+}</code></pre>
+          <button class="button primary compact" type="button" data-copy="pixelwizard">
+            Copy BibTeX
+          </button>
+        </div>
+      </section>
+
+      <section class="section contact" aria-labelledby="contact-title">
+        <div class="contact-inner">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">Wenxue Li</h2>
+          </div>
+          <ul class="contact-list">
+            <li><a href="mailto:fenglinglwb@gmail.com">fenglinglwb@gmail.com</a></li>
+            <li><a href="https://github.com/wxliii">GitHub: wxliii</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; <span id="year">2026</span> PixelWizard. Built for GitHub Pages.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
