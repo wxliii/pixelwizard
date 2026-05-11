@@ -8,7 +8,7 @@ Static research project homepage for:
 - `index.html`: title, authors, abstract, method, results, media placeholders, citation, and links.
 - `script.js`: BibTeX copy behavior.
 - `styles.css`: layout, colors, responsive behavior.
-- `assets/hero-teaser.svg`: temporary teaser placeholder. Replace it when the real figure is ready.
+- `assets/teaser/teaser.jpeg`: teaser image shown next to the title.
 
 ## Add Paper Assets
 
