@@ -1,6 +1,6 @@
 # PixelWizard Homepage
 
-Static project homepage for:
+Static research project homepage for:
 
 **PixelWizard: Towards Efficient High-Fidelity Video Generation at Ultra-Large Spatial Resolution**
 ## Edit Content

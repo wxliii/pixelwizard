@@ -5,10 +5,9 @@ const bibtex = document.querySelector("#bibtex");
 const citations = {
   pixelwizard:
     bibtex?.textContent.trim() ||
-    `@inproceedings{li2026pixelwizard,
+    `@misc{li2026pixelwizard,
   title={PixelWizard: Towards Efficient High-Fidelity Video Generation at Ultra-Large Spatial Resolution},
   author={Li, Wenxue and Ren, Jingjing and Zhang, Peng and Ye, Tian and Zhou, Daiguo and Luan, Jian and Zhu, Lei},
-  booktitle={International Conference on Machine Learning},
   year={2026}
 }`,
 };
