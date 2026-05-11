@@ -70,16 +70,16 @@ a:hover {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-weight: 760;
   text-decoration: none;
 }
 
 .brand-logo {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  object-fit: cover;
+  width: auto;
+  height: 24px;
+  max-width: 96px;
+  object-fit: contain;
 }
 
 .nav-links {
