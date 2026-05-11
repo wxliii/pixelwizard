@@ -5,7 +5,7 @@ Static research project homepage for:
 **PixelWizard: Towards Efficient High-Fidelity Video Generation at Ultra-Large Spatial Resolution**
 ## Edit Content
 
-- `index.html`: title, authors, abstract, method, results, media placeholders, contact, and links.
+- `index.html`: title, authors, abstract, method, results, media placeholders, citation, and links.
 - `script.js`: BibTeX copy behavior.
 - `styles.css`: layout, colors, responsive behavior.
 - `assets/hero-teaser.svg`: temporary teaser placeholder. Replace it when the real figure is ready.

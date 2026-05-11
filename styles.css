@@ -268,8 +268,7 @@ h3 {
 .method-step,
 .result-card,
 .media-placeholder,
-.citation-box,
-.contact-inner {
+.citation-box {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
@@ -418,26 +417,6 @@ pre {
   line-height: 1.55;
 }
 
-.contact {
-  border-top: 1px solid var(--line);
-}
-
-.contact-inner {
-  padding: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.contact-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 10px;
-}
-
 .footer {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
@@ -526,7 +505,6 @@ pre {
     grid-column: auto;
   }
 
-  .contact-inner,
   .footer {
     align-items: flex-start;
     flex-direction: column;
@@ -562,8 +540,7 @@ pre {
   .method-step,
   .result-card,
   .media-placeholder,
-  .citation-box,
-  .contact-inner {
+  .citation-box {
     padding: 16px;
   }
 
