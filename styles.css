@@ -71,23 +71,18 @@ a:hover {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
-  gap: 8px;
-  max-width: 160px;
+  max-width: 180px;
   font-weight: 760;
+  line-height: 0;
   text-decoration: none;
 }
 
 .brand-logo {
+  display: block;
   width: auto;
-  height: 80px;
-  max-width: 120px;
+  height: 40px;
+  max-width: 160px;
   object-fit: contain;
-}
-
-.brand span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .nav-links {
