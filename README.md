@@ -3,17 +3,6 @@
 Static project homepage for:
 
 **PixelWizard: Towards Efficient High-Fidelity Video Generation at Ultra-Large Spatial Resolution**
-
-## Content Sources
-
-The current homepage text is based on `2026_ICML_Wenxue_PixelWizard.pdf` and includes:
-
-- Title and author list
-- Abstract-level summary
-- Method highlights
-- 2K/4K result summary
-- BibTeX placeholder
-
 ## Edit Content
 
 - `index.html`: title, authors, abstract, method, results, media placeholders, contact, and links.
