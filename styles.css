@@ -70,16 +70,26 @@ a:hover {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  flex: 0 0 auto;
+  gap: 8px;
+  max-width: 160px;
   font-weight: 760;
   text-decoration: none;
 }
 
 .brand-logo {
-  width: auto;
-  height: 24px;
-  max-width: 96px;
-  object-fit: contain;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  border-radius: 4px;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.brand span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nav-links {
