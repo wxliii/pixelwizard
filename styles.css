@@ -175,13 +175,6 @@ h1, h2, h3, p, pre { overflow-wrap: anywhere; }
   margin: 0 auto 60px;
 }
 
-.teaser-embed {
-  width: 100%;
-  min-height: 400px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-}
-
 .teaser-img {
   width: 100%;
   border-radius: var(--radius);

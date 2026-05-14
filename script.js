@@ -14,17 +14,29 @@ const citations = {
 
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// Teaser: show PDF if available, otherwise keep JPEG
+// Teaser: render PDF first page as image, fallback to JPEG
 (function () {
-  const embed = document.querySelector(".teaser-embed");
-  const img = document.querySelector(".teaser-img");
-  if (!embed || !img) return;
-  fetch(embed.src, { method: "HEAD" })
-    .then((r) => {
-      if (r.ok) {
-        embed.style.display = "block";
-        img.style.display = "none";
-      }
+  const canvas = document.getElementById("teaser-canvas");
+  const img = document.getElementById("teaser-img");
+  if (!canvas || !img || typeof pdfjsLib === "undefined") return;
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+  pdfjsLib
+    .getDocument("assets/teaser/teaser.pdf")
+    .promise.then((pdf) => pdf.getPage(1))
+    .then((page) => {
+      const scale = 2;
+      const vp = page.getViewport({ scale });
+      canvas.width = vp.width;
+      canvas.height = vp.height;
+      return page
+        .render({ canvasContext: canvas.getContext("2d"), viewport: vp })
+        .promise;
+    })
+    .then(() => {
+      img.src = canvas.toDataURL("image/png");
     })
     .catch(() => {});
 })();
