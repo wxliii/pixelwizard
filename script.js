@@ -1,6 +1,7 @@
 const toast = document.querySelector(".toast");
 const year = document.querySelector("#year");
 const bibtex = document.querySelector("#bibtex");
+const header = document.querySelector(".site-header");
 
 const citations = {
   pixelwizard:
@@ -12,10 +13,43 @@ const citations = {
 }`,
 };
 
+// Update footer year
 if (year) {
   year.textContent = String(new Date().getFullYear());
 }
 
+// Header shadow on scroll
+if (header) {
+  const onScroll = () => {
+    header.classList.toggle("scrolled", window.scrollY > 8);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
+
+// Scroll-driven fade-in animations
+const animatedElements = document.querySelectorAll(".animate");
+
+if (animatedElements.length && "IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      }
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  animatedElements.forEach((el) => observer.observe(el));
+} else {
+  // Fallback: show everything immediately
+  animatedElements.forEach((el) => el.classList.add("visible"));
+}
+
+// BibTeX copy
 document.querySelectorAll("[data-copy]").forEach((button) => {
   button.addEventListener("click", async () => {
     const key = button.dataset.copy;

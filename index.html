@@ -9,7 +9,13 @@
     />
     <title>PixelWizard | Ultra-Large Resolution Video Generation</title>
     <link rel="icon" href="assets/logo.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css?v=20260511-5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=20260514-1" />
   </head>
   <body>
     <header class="site-header" id="top">
@@ -32,8 +38,8 @@
         <div class="hero-copy">
           <p class="eyebrow">Research Project</p>
           <h1 id="hero-title">
-            PixelWizard: Towards Efficient High-Fidelity Video Generation at
-            Ultra-Large Spatial Resolution
+            <span class="title-main">PixelWizard</span>
+            <span class="title-sub">Towards Efficient High-Fidelity Video Generation at Ultra-Large Spatial Resolution</span>
           </h1>
           <p class="authors">
             Wenxue Li, Jingjing Ren, Peng Zhang, Tian Ye, Daiguo Zhou,
@@ -45,16 +51,26 @@
             synthesis and enables fast few-step inference.
           </p>
           <div class="hero-actions" aria-label="Quick links">
-            <a class="button primary" href="#abstract">Read abstract</a>
-            <a class="button" href="#media">View media</a>
-            <a class="button" href="https://github.com/wxliii/pixelwizard">Code</a>
+            <a class="button primary" href="#abstract">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v14M1 8l7 7 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Read abstract
+            </a>
+            <a class="button" href="#media">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="5,3 13,8 5,13" fill="currentColor"/></svg>
+              Watch demos
+            </a>
+            <a class="button" href="https://github.com/wxliii/pixelwizard">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              Code
+            </a>
             <button class="button ghost" type="button" data-copy="pixelwizard">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 009.5 2h-6A1.5 1.5 0 002 3.5v6A1.5 1.5 0 003.5 11H5" stroke="currentColor" stroke-width="1.5"/></svg>
               Copy BibTeX
             </button>
           </div>
         </div>
 
-        <figure class="hero-visual">
+        <figure class="hero-visual animate">
           <img
             src="assets/teaser/teaser.jpeg"
             alt="PixelWizard teaser for ultra-large resolution video generation."
@@ -67,45 +83,57 @@
       </section>
 
       <section class="section summary-strip" aria-label="Paper highlights">
-        <article>
+        <article class="animate">
+          <div class="strip-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18M9 3v18" stroke="currentColor" stroke-width="1.8"/></svg>
+          </div>
           <span>Task</span>
           <strong>Native 2K/4K video generation</strong>
         </article>
-        <article>
+        <article class="animate">
+          <div class="strip-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v9l6 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
           <span>Core idea</span>
           <strong>Structure-detail decoupling</strong>
         </article>
-        <article>
+        <article class="animate">
+          <div class="strip-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
           <span>Speed</span>
           <strong>Over 10x sampling acceleration</strong>
         </article>
-        <article>
+        <article class="animate">
+          <div class="strip-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
           <span>Training</span>
           <strong>Distillation-free few-step inference</strong>
         </article>
       </section>
 
       <section class="section abstract" id="abstract" aria-labelledby="abstract-title">
-        <div class="section-heading">
+        <div class="section-heading animate">
           <p class="eyebrow">Abstract</p>
           <h2 id="abstract-title">Efficient high-fidelity video at ultra-large resolution</h2>
         </div>
         <div class="abstract-body">
-          <p>
+          <p class="animate">
             High-resolution video generation is limited by two coupled
             bottlenecks: unstable optimization and prohibitive computational
             cost. As the token sequence expands, optimization becomes biased
             toward local textures, weakening global coherence and increasing
             both training and inference cost.
           </p>
-          <p>
+          <p class="animate">
             PixelWizard addresses this by hierarchically decoupling global
             structure modeling from high-resolution detail synthesis. It first
             establishes a compact spatiotemporal anchor that concentrates dense
             structural priors, then uses this anchor to guide fine-grained
             synthesis at native high resolution.
           </p>
-          <p>
+          <p class="animate">
             To break the inference bottleneck, PixelWizard introduces
             Noise-Span Aligned Shortcut Training, together with Exponential
             Index-Biased Sampling and Adaptive Noise-Span Calibration. This
@@ -116,13 +144,13 @@
       </section>
 
       <section class="section method" id="method" aria-labelledby="method-title">
-        <div class="section-heading">
+        <div class="section-heading animate">
           <p class="eyebrow">Method</p>
           <h2 id="method-title">From compact anchors to high-resolution detail</h2>
         </div>
 
         <div class="method-flow" aria-label="PixelWizard method flow">
-          <article class="method-step">
+          <article class="method-step animate">
             <span class="step-index">01</span>
             <h3>Spatial-Temporal Anchor Modeling</h3>
             <p>
@@ -132,7 +160,7 @@
             </p>
           </article>
 
-          <article class="method-step">
+          <article class="method-step animate">
             <span class="step-index">02</span>
             <h3>Anchor-Guided High-Resolution Synthesis</h3>
             <p>
@@ -142,7 +170,7 @@
             </p>
           </article>
 
-          <article class="method-step">
+          <article class="method-step animate">
             <span class="step-index">03</span>
             <h3>Noise-Span Aligned Shortcut Training</h3>
             <p>
@@ -155,13 +183,13 @@
       </section>
 
       <section class="section results" id="results" aria-labelledby="results-title">
-        <div class="section-heading">
+        <div class="section-heading animate">
           <p class="eyebrow">Results</p>
           <h2 id="results-title">High visual quality with practical inference speed</h2>
         </div>
         <div class="result-grid">
-          <article class="result-card">
-            <span>2K</span>
+          <article class="result-card animate">
+            <span class="result-badge">2K</span>
             <strong>2560 x 1440</strong>
             <p>
               PixelWizard-2K generates 121-frame videos with strong subject
@@ -169,16 +197,16 @@
               direct high-resolution extrapolation.
             </p>
           </article>
-          <article class="result-card">
-            <span>4K</span>
+          <article class="result-card animate">
+            <span class="result-badge">4K</span>
             <strong>3840 x 2144</strong>
             <p>
               PixelWizard-4K scales to ultra-large spatial resolution while
               preserving coherent structures and fine local details.
             </p>
           </article>
-          <article class="result-card">
-            <span>Efficiency</span>
+          <article class="result-card animate">
+            <span class="result-badge">Efficiency</span>
             <strong>Over 10x faster</strong>
             <p>
               The method accelerates native 2K/4K generative sampling through
@@ -190,38 +218,102 @@
       </section>
 
       <section class="section media" id="media" aria-labelledby="media-title">
-        <div class="section-heading">
+        <div class="section-heading animate">
           <p class="eyebrow">Media</p>
-          <h2 id="media-title">Figures and videos</h2>
+          <h2 id="media-title">Demo videos</h2>
         </div>
-        <div class="media-grid">
-          <article class="media-placeholder wide">
-            <span>Teaser Figure</span>
-            <p>Main qualitative result or paper Figure 1.</p>
+        <div class="video-grid">
+          <article class="video-card animate">
+            <div class="video-wrapper">
+              <video
+                src="assets/videos/demo_2k.mp4"
+                poster="assets/teaser/teaser.jpeg"
+                controls
+                muted
+                loop
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-info">
+              <h3>2K Generation</h3>
+              <p>2560 x 1440 &middot; 121 frames &middot; Coherent global structure with fine local detail</p>
+            </div>
           </article>
-          <article class="media-placeholder">
-            <span>Video Gallery</span>
-            <p>2K/4K generated videos.</p>
+
+          <article class="video-card animate">
+            <div class="video-wrapper">
+              <video
+                src="assets/videos/demo_4k.mp4"
+                poster="assets/teaser/teaser.jpeg"
+                controls
+                muted
+                loop
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-info">
+              <h3>4K Generation</h3>
+              <p>3840 x 2144 &middot; Ultra-large spatial resolution &middot; Preserved coherent structures</p>
+            </div>
           </article>
-          <article class="media-placeholder">
-            <span>Comparison</span>
-            <p>Baseline and ablation visualizations.</p>
+
+          <article class="video-card animate">
+            <div class="video-wrapper">
+              <video
+                src="assets/videos/demo_comparison.mp4"
+                poster="assets/teaser/teaser.jpeg"
+                controls
+                muted
+                loop
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-info">
+              <h3>Comparison</h3>
+              <p>Side-by-side comparison with baseline methods at 2K/4K resolution</p>
+            </div>
+          </article>
+
+          <article class="video-card animate">
+            <div class="video-wrapper">
+              <video
+                src="assets/videos/demo_more.mp4"
+                poster="assets/teaser/teaser.jpeg"
+                controls
+                muted
+                loop
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-info">
+              <h3>More Results</h3>
+              <p>Additional generated samples across diverse scenes and motions</p>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="section citation" id="citation" aria-labelledby="citation-title">
-        <div class="section-heading">
+        <div class="section-heading animate">
           <p class="eyebrow">Citation</p>
           <h2 id="citation-title">BibTeX</h2>
         </div>
-        <div class="citation-box">
+        <div class="citation-box animate">
           <pre><code id="bibtex">@misc{li2026pixelwizard,
   title={PixelWizard: Towards Efficient High-Fidelity Video Generation at Ultra-Large Spatial Resolution},
   author={Li, Wenxue and Ren, Jingjing and Zhang, Peng and Ye, Tian and Zhou, Daiguo and Luan, Jian and Zhu, Lei},
   year={2026}
 }</code></pre>
           <button class="button primary compact" type="button" data-copy="pixelwizard">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 009.5 2h-6A1.5 1.5 0 002 3.5v6A1.5 1.5 0 003.5 11H5" stroke="currentColor" stroke-width="1.5"/></svg>
             Copy BibTeX
           </button>
         </div>
@@ -231,7 +323,10 @@
 
     <footer class="footer">
       <p>&copy; <span id="year">2026</span> PixelWizard. Built for GitHub Pages.</p>
-      <a href="#top">Back to top</a>
+      <a href="#top" class="back-to-top">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 14V2M2 8l6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Back to top
+      </a>
     </footer>
 
     <div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
