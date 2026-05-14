@@ -1,7 +1,6 @@
 const toast = document.querySelector(".toast");
 const yearEl = document.querySelector("#year");
 const bibtex = document.querySelector("#bibtex");
-const navbar = document.querySelector(".navbar");
 
 const citations = {
   pixelwizard:
@@ -13,36 +12,8 @@ const citations = {
 }`,
 };
 
-// Footer year
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// Navbar shadow on scroll
-if (navbar) {
-  const onScroll = () => navbar.classList.toggle("scrolled", window.scrollY > 10);
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-}
-
-// Scroll fade-in
-const fadeEls = document.querySelectorAll(".fade-in");
-if (fadeEls.length && "IntersectionObserver" in window) {
-  const obs = new IntersectionObserver(
-    (entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          e.target.classList.add("visible");
-          obs.unobserve(e.target);
-        }
-      }
-    },
-    { threshold: 0.08 }
-  );
-  requestAnimationFrame(() => fadeEls.forEach((el) => obs.observe(el)));
-} else {
-  fadeEls.forEach((el) => el.classList.add("visible"));
-}
-
-// BibTeX copy
 document.querySelectorAll("[data-copy]").forEach((btn) => {
   btn.addEventListener("click", async () => {
     const key = btn.dataset.copy;
