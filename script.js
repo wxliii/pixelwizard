@@ -1,7 +1,7 @@
 const toast = document.querySelector(".toast");
-const year = document.querySelector("#year");
+const yearEl = document.querySelector("#year");
 const bibtex = document.querySelector("#bibtex");
-const header = document.querySelector(".site-header");
+const navbar = document.querySelector(".navbar");
 
 const citations = {
   pixelwizard:
@@ -13,77 +13,56 @@ const citations = {
 }`,
 };
 
-// Update footer year
-if (year) {
-  year.textContent = String(new Date().getFullYear());
-}
+// Footer year
+if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// Header shadow on scroll
-if (header) {
-  const onScroll = () => {
-    header.classList.toggle("scrolled", window.scrollY > 8);
-  };
+// Navbar shadow on scroll
+if (navbar) {
+  const onScroll = () => navbar.classList.toggle("scrolled", window.scrollY > 10);
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 }
 
-// Scroll-driven fade-in animations
-const animatedElements = document.querySelectorAll(".animate");
-
-if (animatedElements.length && "IntersectionObserver" in window) {
-  // Opt-in: only hide elements once JS is ready
-  document.body.classList.add("js-animate");
-
-  const observer = new IntersectionObserver(
+// Scroll fade-in
+const fadeEls = document.querySelectorAll(".fade-in");
+if (fadeEls.length && "IntersectionObserver" in window) {
+  const obs = new IntersectionObserver(
     (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          obs.unobserve(e.target);
         }
       }
     },
     { threshold: 0.08 }
   );
-
-  // Small delay so the browser paints the hidden state before observing
-  requestAnimationFrame(() => {
-    animatedElements.forEach((el) => observer.observe(el));
-  });
+  requestAnimationFrame(() => fadeEls.forEach((el) => obs.observe(el)));
 } else {
-  animatedElements.forEach((el) => el.classList.add("visible"));
+  fadeEls.forEach((el) => el.classList.add("visible"));
 }
 
 // BibTeX copy
-document.querySelectorAll("[data-copy]").forEach((button) => {
-  button.addEventListener("click", async () => {
-    const key = button.dataset.copy;
-    const citation = citations[key];
-
-    if (!citation) {
-      showToast("Citation is not configured yet.");
-      return;
-    }
-
+document.querySelectorAll("[data-copy]").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const key = btn.dataset.copy;
+    const text = citations[key];
+    if (!text) return showToast("Citation not configured.");
     try {
-      await copyText(citation);
-      showToast("BibTeX copied.");
+      await copyText(text);
+      showToast("BibTeX copied!");
     } catch {
-      showToast("Copy failed. Select the BibTeX text manually.");
+      showToast("Copy failed — select text manually.");
     }
   });
 });
 
-function showToast(message) {
+function showToast(msg) {
   if (!toast) return;
-
-  toast.textContent = message;
+  toast.textContent = msg;
   toast.classList.add("visible");
-
-  window.clearTimeout(showToast.timeout);
-  showToast.timeout = window.setTimeout(() => {
-    toast.classList.remove("visible");
-  }, 2100);
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => toast.classList.remove("visible"), 2200);
 }
 
 async function copyText(text) {
@@ -91,19 +70,15 @@ async function copyText(text) {
     await navigator.clipboard.writeText(text);
     return;
   }
-
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.setAttribute("readonly", "");
-  textarea.style.position = "fixed";
-  textarea.style.left = "-9999px";
-  document.body.appendChild(textarea);
-  textarea.select();
-
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.setAttribute("readonly", "");
+  ta.style.cssText = "position:fixed;left:-9999px";
+  document.body.appendChild(ta);
+  ta.select();
   try {
-    const success = document.execCommand("copy");
-    if (!success) throw new Error("execCommand copy failed");
+    if (!document.execCommand("copy")) throw new Error();
   } finally {
-    document.body.removeChild(textarea);
+    document.body.removeChild(ta);
   }
 }

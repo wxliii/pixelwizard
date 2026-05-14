@@ -9,25 +9,25 @@ Static research project homepage for the paper "PixelWizard: Towards Efficient H
 ## Development
 
 ```bash
-# Preview locally — just open the file
+# Preview locally
 open index.html
 
-# Or serve with any static file server for live reload
+# Or serve with any static file server
 python3 -m http.server 8000
 ```
 
 ## Architecture
 
-Single-page static site with three source files:
+Single-page static site with three source files, dark-themed (inspired by MoCha/Nerfies academic project templates):
 
-- **`index.html`** — All page content: hero with teaser image, abstract, method steps, results cards, media placeholders, BibTeX citation block, and sticky navigation. Sections are connected via anchor links (`#abstract`, `#method`, `#results`, `#media`, `#citation`).
-- **`styles.css`** — CSS custom properties (`--bg`, `--ink`, `--accent`, etc.) define the color scheme. Layout uses CSS Grid with responsive breakpoints at 980px, 760px, and 540px. The `styles.css` link in HTML includes a cache-busting query string (e.g. `?v=20260511-5`) — bump this when changing styles.
-- **`script.js`** — Handles BibTeX copy-to-clipboard for all `[data-copy]` buttons and manages the toast notification. Citations are keyed by the `data-copy` attribute value (currently `"pixelwizard"`).
-- **`assets/`** — `logo.png` (favicon + brand), `teaser/teaser.jpeg` (hero image), `hero-teaser.svg`.
+- **`index.html`** — Page content: navbar, hero, teaser figure, highlights, abstract, method steps, results, demo videos, BibTeX. Sections use anchor links (`#abstract`, `#method`, `#results`, `#media`, `#citation`).
+- **`styles.css`** — Dark theme via CSS custom properties (`--bg: #020202`, `--ink: #f5f5f5`, `--accent: #6fb0ff`). Uses Inter + Playfair Display fonts. Layout uses CSS Grid with responsive breakpoints at 860px and 640px. Cache-busting query string (`?v=...`) must be bumped when editing.
+- **`script.js`** — Scroll fade-in (IntersectionObserver on `.fade-in` elements), navbar shadow, BibTeX copy-to-clipboard (`[data-copy]` buttons), toast notifications.
+- **`assets/`** — `logo.png`, `teaser/teaser.jpeg`, `videos/34.mov` (demo video).
 
 ## Key Patterns
 
-- **BibTeX sync**: The BibTeX text lives in the `<pre><code id="bibtex">` block in HTML. `script.js` reads it at load time via `bibtex?.textContent.trim()`. If you change the BibTeX, edit the HTML block — the JS will pick it up automatically.
-- **Cache busting**: The CSS file version query string (`?v=...`) must be updated manually when editing `styles.css`, otherwise browsers may serve a cached version on GitHub Pages.
-- **Responsive grid**: Multi-column layouts collapse to 2-col at 980px and 1-col at 760px. The `.media-placeholder.wide` spans full width on desktop but reverts to single cell on mobile.
-- **Deploy**: Push to `main` branch; GitHub Pages serves from repo root. The `.nojekyll` file prevents Jekyll processing.
+- **BibTeX sync**: BibTeX text lives in `<pre><code id="bibtex">`. JS reads it at load via `bibtex?.textContent.trim()`. Edit the HTML block — JS picks it up automatically.
+- **Scroll animations**: Elements with class `.fade-in` animate in on scroll. No JS class toggling needed on body — the observer handles it directly.
+- **Video files**: Place mp4/mov files in `assets/videos/` and reference them in `<video src="...">` tags in the media section. Note: `.mov` works in Safari; `.mp4` is safer for cross-browser.
+- **Deploy**: Push to `main`; GitHub Pages serves from repo root. `.nojekyll` prevents Jekyll processing.
