@@ -14,6 +14,21 @@ const citations = {
 
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+// Teaser: show PDF if available, otherwise keep JPEG
+(function () {
+  const embed = document.querySelector(".teaser-embed");
+  const img = document.querySelector(".teaser-img");
+  if (!embed || !img) return;
+  fetch(embed.src, { method: "HEAD" })
+    .then((r) => {
+      if (r.ok) {
+        embed.style.display = "block";
+        img.style.display = "none";
+      }
+    })
+    .catch(() => {});
+})();
+
 document.querySelectorAll("[data-copy]").forEach((btn) => {
   btn.addEventListener("click", async () => {
     const key = btn.dataset.copy;

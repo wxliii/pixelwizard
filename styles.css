@@ -32,7 +32,6 @@ body {
 }
 
 img { max-width: 100%; display: block; }
-video { max-width: 100%; display: block; }
 
 a {
   color: var(--accent);
@@ -176,7 +175,14 @@ h1, h2, h3, p, pre { overflow-wrap: anywhere; }
   margin: 0 auto 60px;
 }
 
-.teaser img {
+.teaser-embed {
+  width: 100%;
+  min-height: 400px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+.teaser-img {
   width: 100%;
   border-radius: var(--radius);
   border: 1px solid var(--line);
@@ -314,17 +320,28 @@ h1, h2, h3, p, pre { overflow-wrap: anywhere; }
 }
 
 .carousel-track {
-  overflow: hidden;
+  position: relative;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   background: #000;
+  overflow: hidden;
 }
 
 .carousel-slide {
-  display: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 .carousel-slide.active {
-  display: block;
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .carousel-slide video {
