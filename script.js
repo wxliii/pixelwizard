@@ -31,6 +31,9 @@ if (header) {
 const animatedElements = document.querySelectorAll(".animate");
 
 if (animatedElements.length && "IntersectionObserver" in window) {
+  // Opt-in: only hide elements once JS is ready
+  document.body.classList.add("js-animate");
+
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
@@ -40,12 +43,14 @@ if (animatedElements.length && "IntersectionObserver" in window) {
         }
       }
     },
-    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.08 }
   );
 
-  animatedElements.forEach((el) => observer.observe(el));
+  // Small delay so the browser paints the hidden state before observing
+  requestAnimationFrame(() => {
+    animatedElements.forEach((el) => observer.observe(el));
+  });
 } else {
-  // Fallback: show everything immediately
   animatedElements.forEach((el) => el.classList.add("visible"));
 }
 
