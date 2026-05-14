@@ -53,3 +53,44 @@ async function copyText(text) {
     document.body.removeChild(ta);
   }
 }
+
+// ── Video Carousel ──────────────────────────────────────────────
+const slides = document.querySelectorAll(".carousel-slide");
+if (slides.length > 0) {
+  const dotsContainer = document.querySelector(".carousel-dots");
+  const prevBtn = document.querySelector(".carousel-prev");
+  const nextBtn = document.querySelector(".carousel-next");
+  let current = 0;
+
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", `Go to video ${i + 1}`);
+    dot.addEventListener("click", () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(index) {
+    // Pause current video
+    const currentVideo = slides[current].querySelector("video");
+    if (currentVideo) currentVideo.pause();
+
+    slides[current].classList.remove("active");
+    dotsContainer.children[current].classList.remove("active");
+
+    current = (index + slides.length) % slides.length;
+
+    slides[current].classList.add("active");
+    dotsContainer.children[current].classList.add("active");
+  }
+
+  prevBtn.addEventListener("click", () => goTo(current - 1));
+  nextBtn.addEventListener("click", () => goTo(current + 1));
+
+  // Keyboard support
+  document.querySelector(".carousel").addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") goTo(current - 1);
+    if (e.key === "ArrowRight") goTo(current + 1);
+  });
+}

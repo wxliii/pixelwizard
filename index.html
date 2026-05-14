@@ -8,7 +8,7 @@
     <link rel="icon" href="assets/logo.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Castoro:ital@0;1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css?v=20260514-3" />
   </head>
   <body>
@@ -126,11 +126,52 @@
     <section class="section section-alt" id="media">
       <div class="container">
         <h2 class="section-title">Demo Videos</h2>
-        <div class="video-row">
-          <div class="video-item">
-            <video src="assets/videos/34.mov" poster="assets/teaser/teaser.jpeg" controls muted loop preload="metadata"></video>
-            <p class="video-label">Generated Sample</p>
+        <div class="carousel" tabindex="0">
+          <div class="carousel-track">
+            <div class="carousel-slide active">
+              <video src="assets/videos/1.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 1</p>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/videos/2.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 2</p>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/videos/58.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 3</p>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/videos/61.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 4</p>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/videos/69.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 5</p>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/videos/Fig1_2.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 6</p>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/videos/Fig1_3.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 7</p>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/videos/Fig1_4.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 8</p>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/videos/Pug.mov" controls muted loop preload="metadata"></video>
+              <p class="video-label">Sample 9</p>
+            </div>
           </div>
+          <button class="carousel-btn carousel-prev" aria-label="Previous video">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn carousel-next" aria-label="Next video">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <div class="carousel-dots"></div>
         </div>
       </div>
     </section>
