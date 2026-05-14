@@ -110,6 +110,13 @@ if (slides.length > 0) {
 
     slides[current].classList.add("active");
     dotsContainer.children[current].classList.add("active");
+
+    // Auto-play new video (muted allows autoplay)
+    const nextVideo = slides[current].querySelector("video");
+    if (nextVideo) {
+      nextVideo.currentTime = 0;
+      nextVideo.play().catch(() => {});
+    }
   }
 
   prevBtn.addEventListener("click", () => goTo(current - 1));
@@ -120,4 +127,8 @@ if (slides.length > 0) {
     if (e.key === "ArrowLeft") goTo(current - 1);
     if (e.key === "ArrowRight") goTo(current + 1);
   });
+
+  // Auto-play first video on load
+  const firstVideo = slides[0].querySelector("video");
+  if (firstVideo) firstVideo.play().catch(() => {});
 }
